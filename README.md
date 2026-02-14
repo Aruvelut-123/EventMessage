@@ -1,7 +1,36 @@
 # EventMessage
 A Velocity plugin that adds global announcement functionality, sending specific custom messages when players join or leave the network or subserver.  
 Message formatting fully supports the [MiniMessage](https://docs.papermc.io/adventure/minimessage/format/) syntax, but doesn't support vanilla one for now.  
-  
-A configuration example will be added to here soon, as the current version's relevant config reference is not yet complete.  
-  
-Also after the first stable release it will become GPL license and open source on github :)
+
+Here's an example configuration for checking if you messed up the configuration it generates.
+```
+# EventMessage Plugin Configuration
+# 插件配置文件
+
+# 消息配置
+messages:
+  # 玩家加入消息
+  join:
+    enabled: true
+    format: "<green><bold>+ </bold></green><aqua>%player% </aqua><gray>已连接</gray>"
+  # 玩家离开消息
+  leave:
+    enabled: true
+    format: "<red><bold>- </bold></red><aqua>%player% </aqua><gray>已断开连接</gray>"
+  # 服务器切换消息
+  transfer:
+    enabled: true
+    format: "<aqua>%player% <gray>从<yellow> %from_server% <gray>前往 <green>%to_server%"
+  prefix:
+    enabled: true
+    format: "<gray>[事件]</gray>"
+
+# 功能设置
+settings:
+  # 大厅服务器名称
+  lobby: 'lobby'
+  # 是否启用调试模式
+  debug: false
+  # 消息发送延迟（毫秒）
+  message-delay: 1000
+```
