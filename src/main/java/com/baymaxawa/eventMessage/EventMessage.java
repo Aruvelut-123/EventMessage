@@ -1,7 +1,6 @@
 package com.baymaxawa.eventMessage;
 
 import com.google.inject.Inject;
-import com.mojang.brigadier.tree.LiteralCommandNode;
 import com.velocitypowered.api.command.*;
 import com.velocitypowered.api.event.Subscribe;
 import com.velocitypowered.api.event.connection.DisconnectEvent;
@@ -10,14 +9,11 @@ import com.velocitypowered.api.event.player.ServerConnectedEvent;
 import com.velocitypowered.api.event.proxy.ProxyInitializeEvent;
 import com.velocitypowered.api.plugin.Plugin;
 import com.velocitypowered.api.plugin.annotation.DataDirectory;
-import com.velocitypowered.api.proxy.Player;
 import com.velocitypowered.api.proxy.ProxyServer;
-import com.velocitypowered.api.proxy.server.RegisteredServer;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.attribute.FileAttribute;
-import java.util.stream.Stream;
 import org.slf4j.Logger;
 
 @Plugin(id = "event-message", name = "EventMessage", description = "A Velocity Plugin that can output player join messages through trchat for broadcast.", version = "1.0.0-SNAPSHOT", authors = {"Baymaxawa"})
@@ -128,7 +124,7 @@ public final class EventMessage {
 
     private String translateColorCodes(String message) {
         if (this.configManager.isPrefixEnabled())
-            message = this.configManager.getPrefixFormat() + this.configManager.getPrefixFormat();
+            message = this.configManager.getPrefixFormat() + message;
         return message;
     }
 }
